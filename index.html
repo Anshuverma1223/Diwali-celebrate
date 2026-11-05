@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#100817">
+<title>Happy Diwali | Festival of Lights</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --gold: #ffd36a;
+  --orange: #ff8b32;
+  --dark: #100817;
+  --cream: #fff1d0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--dark);
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+}
+
+#particles {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+nav {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 8%;
+  border-bottom: 1px solid #ffffff15;
+  backdrop-filter: blur(15px);
+}
+
+.logo {
+  color: var(--gold);
+  font-family: 'Cinzel', serif;
+  font-size: 23px;
+  font-weight: 800;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 13px;
+  margin-left: 25px;
+  transition: .3s;
+}
+
+nav a:hover { color: var(--gold); }
+
+.hero {
+  min-height: 88vh;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 60px 20px;
+  background:
+    radial-gradient(ellipse at 50% 45%, #9c391c35, transparent 55%),
+    radial-gradient(circle at 15% 20%, #f8a22b15, transparent 30%);
+}
+
+.tag {
+  color: var(--gold);
+  letter-spacing: 5px;
+  font-size: 12px;
+  text-transform: uppercase;
+  margin-bottom: 25px;
+  animation: fadeUp 1s both;
+}
+
+h1 {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(42px, 9vw, 100px);
+  line-height: 1.2;
+  background: linear-gradient(
+    120deg, #fff7d6, #ffbd42, #fff0aa, #ff8d31
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: shine 4s linear infinite, fadeUp 1s both;
+  filter: drop-shadow(0 0 20px #ff9d3b40);
+}
+
+.subtitle {
+  margin-top: 20px;
+  color: #f4d9b4;
+  font-size: clamp(14px, 2vw, 19px);
+  letter-spacing: 2px;
+  animation: fadeUp 1.5s both;
+}
+
+.recipient {
+  margin-top: 30px;
+  color: var(--gold);
+  font-size: 22px;
+  font-family: 'Cinzel', serif;
+}
+
+.message {
+  max-width: 600px;
+  margin: 15px auto 0;
+  color: #d8c5b2;
+  line-height: 1.9;
+  font-size: 14px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 35px;
+}
+
+.btn {
+  padding: 14px 25px;
+  border-radius: 40px;
+  border: 1px solid var(--gold);
+  background: linear-gradient(120deg, #ffbd42, #e87b23);
+  color: #251007;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  transition: .3s;
+  box-shadow: 0 0 20px #ffae3030;
+}
+
+.btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 35px #ffae3080;
+}
+
+.btn.secondary {
+  background: transparent;
+  color: var(--gold);
+}
+
+.diyas {
+  display: flex;
+  gap: clamp(25px, 8vw, 75px);
+  justify-content: center;
+  margin-top: 70px;
+}
+
+.diya {
+  position: relative;
+  width: 65px;
+  height: 32px;
+  background: linear-gradient(#ffda7a, #d76b22);
+  border-radius: 0 0 50% 50%;
+  box-shadow: 0 12px 30px #ff8b3240;
+}
+
+.diya::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -37px;
+  transform: translateX(-50%);
+  width: 19px;
+  height: 35px;
+  background: radial-gradient(ellipse, #fff7a5 5%, #ffb42e 45%, #ff531b 80%);
+  border-radius: 50% 50% 45% 45%;
+  filter: drop-shadow(0 0 13px #ffae32);
+  animation: flame .7s infinite alternate;
+  transform-origin: bottom;
+}
+
+.diya::after {
+  content: "";
+  position: absolute;
+  top: 30px;
+  left: -12px;
+  width: 90px;
+  height: 20px;
+  background: #ff9c2a;
+  opacity: .17;
+  filter: blur(18px);
+}
+
+@keyframes flame {
+  from { transform: translateX(-50%) rotate(-5deg) scale(.9); }
+  to { transform: translateX(-50%) rotate(5deg) scale(1.1); }
+}
+
+@keyframes shine {
+  to { background-position: 200% center; }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(25px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+section {
+  position: relative;
+  z-index: 2;
+  padding: 90px 8%;
+  text-align: center;
+}
+
+.section-title {
+  font-family: 'Cinzel', serif;
+  color: var(--gold);
+  font-size: clamp(28px, 5vw, 45px);
+  margin-bottom: 20px;
+}
+
+.section-text {
+  color: #c9b9a7;
+  line-height: 1.9;
+  max-width: 650px;
+  margin: auto;
+  font-size: 14px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-top: 45px;
+}
+
+.card {
+  padding: 35px 20px;
+  background: linear-gradient(145deg, #ffffff12, #ffffff04);
+  border: 1px solid #ffcb6530;
+  border-radius: 18px;
+  transition: .35s;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  border-color: var(--gold);
+  background: #ffb02b10;
+}
+
+.card .emoji {
+  font-size: 38px;
+  margin-bottom: 15px;
+}
+
+.card h3 {
+  color: var(--gold);
+  font-family: 'Cinzel', serif;
+  margin-bottom: 12px;
+}
+
+.card p {
+  font-size: 13px;
+  line-height: 1.8;
+  color: #c9b9a7;
+}
+
+.share-box {
+  max-width: 570px;
+  margin: 35px auto 0;
+  padding: 30px;
+  background: #ffffff09;
+  border: 1px solid #ffd36a35;
+  border-radius: 20px;
+}
+
+.share-box input {
+  width: 100%;
+  padding: 14px;
+  margin: 10px 0 18px;
+  border-radius: 9px;
+  outline: none;
+  border: 1px solid #ffd36a55;
+  background: #ffffff0c;
+  color: white;
+  font-family: inherit;
+}
+
+footer {
+  position: relative;
+  z-index: 2;
+  padding: 35px 15px;
+  border-top: 1px solid #ffffff15;
+  text-align: center;
+  color: #b7a18a;
+  font-size: 12px;
+}
+
+footer span { color: var(--gold); }
+
+#toast {
+  position: fixed;
+  z-index: 10;
+  bottom: 25px;
+  left: 50%;
+  transform: translate(-50%, 100px);
+  background: #ffd36a;
+  color: #251007;
+  padding: 12px 25px;
+  border-radius: 30px;
+  font-size: 13px;
+  transition: .3s;
+}
+
+#toast.show {
+  transform: translate(-50%, 0);
+}
+
+@media(max-width: 700px) {
+  nav { padding: 18px 5%; }
+  nav a { margin-left: 10px; font-size: 11px; }
+  .cards { grid-template-columns: 1fr; }
+  .diyas { gap: 35px; }
+  section { padding: 65px 6%; }
+}
+
+@media(prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="particles"></canvas>
+
+<nav>
+  <div class="logo">✨ DEEPOTSAV</div>
+  <div>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#share">Share</a>
+  </div>
+</nav>
+
+<main>
+<section class="hero" id="home">
+
+  <div class="tag">✦ Festival of Lights ✦</div>
+
+  <h1>Happy<br>Diwali</h1>
+
+  <p class="subtitle">
+    MAY YOUR LIFE SHINE WITH HAPPINESS
+  </p>
+
+  <div class="recipient" id="recipient">
+    Dear Friends & Family ✨
+  </div>
+
+  <p class="message">
+    May this beautiful festival bring endless happiness,
+    prosperity, success and new opportunities into your life.
+    May every diya illuminate your path with hope and positivity.
+  </p>
+
+  <div class="actions">
+    <button class="btn" onclick="shareWebsite()">
+      ✨ Share Greeting
+    </button>
+
+    <button class="btn secondary" onclick="createFirework()">
+      ✦ Celebrate
+    </button>
+  </div>
+
+  <div class="diyas">
+    <div class="diya"></div>
+    <div class="diya"></div>
+    <div class="diya"></div>
+  </div>
+
+</section>
+
+<section id="about">
+  <h2 class="section-title">The Magic of Diwali</h2>
+  <p class="section-text">
+    Diwali celebrates the victory of light over darkness,
+    knowledge over ignorance and hope over fear.
+    Let's spread love, kindness and happiness together.
+  </p>
+
+  <div class="cards">
+    <div class="card">
+      <div class="emoji">🪔</div>
+      <h3>Light</h3>
+      <p>May positivity and knowledge illuminate your journey.</p>
+    </div>
+
+    <div class="card">
+      <div class="emoji">✨</div>
+      <h3>Prosperity</h3>
+      <p>May your dreams turn into beautiful achievements.</p>
+    </div>
+
+    <div class="card">
+      <div class="emoji">❤️</div>
+      <h3>Happiness</h3>
+      <p>May your home always be filled with love and joy.</p>
+    </div>
+  </div>
+</section>
+
+<section id="share">
+  <h2 class="section-title">Create Your Greeting</h2>
+  <p class="section-text">
+    Add someone's name and share a personalised Diwali greeting.
+  </p>
+
+  <div class="share-box">
+    <label for="name">Enter recipient's name</label>
+    <input id="name" type="text"
+      placeholder="Example: Anshu">
+
+    <button class="btn" onclick="personalise()">
+      Create Greeting
+    </button>
+
+    <div style="margin-top:22px">
+      <button class="btn secondary" onclick="shareWebsite()">
+        Share with Friends
+      </button>
+
+      <button class="btn secondary" onclick="copyLink()">
+        Copy Website Link
+      </button>
+    </div>
+  </div>
+</section>
+
+<section id="business">
+  <h2 class="section-title">Business & Collaborations</h2>
+
+  <p class="section-text">
+    Interested in digital festival greetings, creative web
+    experiences or a festive website for your brand?
+    Let's connect for a collaboration.
+  </p>
+
+  <div class="actions">
+    <a href="mailto:YOUR_EMAIL@example.com"
+       style="text-decoration:none">
+      <button class="btn">Contact for Collaboration</button>
+    </a>
+  </div>
+</section>
+</main>
+
+<footer>
+  Made with <span>♥</span> and creativity |
+  DEEPOTSAV © 2026
+  <br><br>
+  Wishing everyone a bright and beautiful Diwali.
+</footer>
+
+<div id="toast">Link copied successfully!</div>
+
+<script>
+// PERSONAL GREETING
+function personalise() {
+  const name = document.getElementById("name").value.trim();
+
+  if (!name) {
+    showToast("Please enter a name!");
+    return;
+  }
+
+  document.getElementById("recipient").textContent =
+    "Dear " + name + " ✨";
+
+  showToast("Your greeting is ready!");
+}
+
+// SHARE WEBSITE
+async function shareWebsite() {
+  const shareData = {
+    title: "Happy Diwali ✨",
+    text: "Wishing you happiness, prosperity and success. Happy Diwali!",
+    url: window.location.href
+  };
+
+  try {
+    if (navigator.share) {
+      await navigator.share(shareData);
+    } else {
+      await copyLink();
+    }
+  } catch (error) {
+    if (error.name !== "AbortError") {
+      showToast("Sharing is unavailable. Copy the link instead.");
+    }
+  }
+}
+
+// COPY WEBSITE LINK
+async function copyLink() {
+  try {
+    await navigator.clipboard.writeText(window.location.href);
+    showToast("Website link copied!");
+  } catch (error) {
+    showToast("Please copy the link from your browser.");
+  }
+}
+
+// NOTIFICATION
+function showToast(message) {
+  const toast = document.getElementById("toast");
+  toast.textContent = message;
+  toast.classList.add("show");
+
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 2500);
+}
+
+// ANIMATED PARTICLE EFFECT
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+
+let particles = [];
+let width, height;
+
+function resize() {
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  width = window.innerWidth;
+  height = window.innerHeight;
+
+  canvas.width = width * dpr;
+  canvas.height = height * dpr;
+  canvas.style.width = width + "px";
+  canvas.style.height = height + "px";
+
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+}
+
+window.addEventListener("resize", resize);
+resize();
+
+const reducedMotion =
+  window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+function createFirework(x = Math.random() * width,
+                        y = Math.random() * height * 0.65) {
+  if (reducedMotion) return;
+
+  for (let i = 0; i < 45; i++) {
+    const angle = Math.random() * Math.PI * 2;
+    const speed = Math.random() * 3 + 1;
+
+    particles.push({
+      x, y,
+      vx: Math.cos(angle) * speed,
+      vy: Math.sin(angle) * speed,
+      life: 1,
+      size: Math.random() * 2.5 + 1,
+      color: ["#ffd36a", "#ff8b32", "#fff1d0",
+              "#ffcf70"][Math.floor(Math.random() * 4)]
+    });
+  }
+}
+
+function animate() {
+  ctx.clearRect(0, 0, width, height);
+
+  particles.forEach((p, i) => {
+    p.x += p.vx;
+    p.y += p.vy;
+    p.vy += 0.025;
+    p.life -= 0.012;
+
+    ctx.globalAlpha = Math.max(0, p.life);
+    ctx.fillStyle = p.color;
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+    ctx.fill();
+
+    if (p.life <= 0) particles.splice(i, 1);
+  });
+
+  ctx.globalAlpha = 1;
+
+  requestAnimationFrame(animate);
+}
+
+if (!reducedMotion) {
+  animate();
+
+  setInterval(() => {
+    createFirework(
+      Math.random() * width,
+      Math.random() * height * 0.55
+    );
+  }, 1800);
+}
+
+// Tap anywhere on the background for a visual sparkle
+canvas.addEventListener("click", (event) => {
+  createFirework(event.clientX, event.clientY);
+});
+</script>
+
+</body>
+</html>
